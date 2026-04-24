@@ -1,0 +1,38 @@
+const fs = require('fs');
+const path = require('path');
+const sneaks = fs.readdirSync(path.join('public', 'images', 'sneakers')).filter((f) => f.endsWith('.jpg')).sort();
+const watches = fs.readdirSync(path.join('public', 'images', 'watches')).filter((f) => f.endsWith('.jpg')).sort();
+console.log('SNEAKERS');
+sneaks.forEach((f, i) => {
+  const id = `snk-${String(i + 1).padStart(3, '0')}`;
+  const name = `Sneaker ${i + 1}`;
+  const price = 104 + i * 5;
+  const stock = 10 + ((i + 1) % 8);
+  const desc = 'Stylish sneaker with comfortable fit and modern design.';
+  console.log('  {');
+  console.log(`    id: '${id}',`);
+  console.log(`    name: '${name}',`);
+  console.log(`    price: ${price},`);
+  console.log(`    image: '/images/sneakers/${f}',`);
+  console.log(`    category: 'footwear',`);
+  console.log(`    description: '${desc}',`);
+  console.log(`    stock: ${stock},`);
+  console.log('  },');
+});
+console.log('WATCHES');
+watches.forEach((f, i) => {
+  const id = `wch-${String(i + 1).padStart(3, '0')}`;
+  const name = `Watch ${i + 1}`;
+  const price = 159 + i * 10;
+  const stock = 6 + ((i + 1) % 10);
+  const desc = 'Elegant watch with precision movement and classic styling.';
+  console.log('  {');
+  console.log(`    id: '${id}',`);
+  console.log(`    name: '${name}',`);
+  console.log(`    price: ${price},`);
+  console.log(`    image: '/images/watches/${f}',`);
+  console.log(`    category: 'watches',`);
+  console.log(`    description: '${desc}',`);
+  console.log(`    stock: ${stock},`);
+  console.log('  },');
+});
